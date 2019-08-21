@@ -46,5 +46,3 @@ if __name__ == '__main__':
         img_list = get_url(html)
         for img in img_list:
             get_img(img)
-
-
