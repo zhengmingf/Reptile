@@ -6,7 +6,7 @@ import requests
 from lxml import etree
 
 #https://www.58pic.com/c/16029893
-#https://www.58pic.com/piccate/10-0-0-p1.html
+
 
 main_url = 'https://www.58pic.com/c/16029893'
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:66.0) Gecko/20100101 Firefox/66.0',
@@ -20,7 +20,7 @@ def get_html(url):
 def get_page_url(data):
     '''提取详情页url'''
     html = etree.HTML(data)
-    url_list = html.xpath('//a[@class="thumb-box"]/@href')
+    url_list = html.xpath('//div[@class="card-img"]/a/@href')
     return url_list
 
 def get_img_url(data):
@@ -37,6 +37,9 @@ def get_img(url,file):
     with open (file_name,'wb') as save_img:
         save_img.write(img)
 
+# html = get_html(main_url)
+# url_list = get_page_url(html)
+# html = get_html('http:'+url_list[0])
 
 
 html = get_html(main_url)
